@@ -2,30 +2,54 @@ package stats;
 
 import java.util.Arrays;
 
-// TODO [Step 3.1]: Add class-level Javadoc with @author tag
+/**
+ * Calculates statistical metrics from a dynamic collection of integer values.
+ *
+ * @author Nish Adhikari
+ */
 public class Stats {
 
     private int[] numbers;
     private int count;
 
-    // TODO [Step 3.2]: Add Javadoc with @param capacity
+    /**
+     * Creates a new Stats object that can hold a fixed number of values.
+     *
+     * @param capacity the maximum number of values that can be stored
+     */
     public Stats(int capacity) {
         numbers = new int[capacity];
     }
 
-    // TODO [Step 3.3]: Add Javadoc with @param value
+    /**
+     * Adds a value to the collection.
+     *
+     * @param value the integer to append
+     */
     public void addValue(int value) {
         numbers[count] = value;
         count++;
     }
 
-    // TODO [Step 3.4]: Add Javadoc with @return
+    /**
+     * Returns how many values have actually been added.
+     *
+     * @return the number of values added, not the array capacity
+     */
     public int getCount() {
         return this.count;
     }
 
-    // TODO [Step 3.5]: Throw IllegalStateException if count == 0 ("No values have been added")
+    /**
+     * Finds the highest value that has been added.
+     *
+     * @return the maximum value
+     * @throws IllegalStateException if no values have been added
+     */
     public int getMax() {
+        if (count == 0) {
+            throw new IllegalStateException("No values have been added to calculate statistics.");
+        }
         int max = numbers[0];
         for (int i = 1; i < count; i++) {
             if (numbers[i] > max) {
@@ -35,8 +59,16 @@ public class Stats {
         return max;
     }
 
-    // TODO [Step 3.6]: Throw IllegalStateException if count == 0 ("No values have been added")
+    /**
+     * Finds the lowest value that has been added.
+     *
+     * @return the minimum value
+     * @throws IllegalStateException if no values have been added
+     */
     public int getMin() {
+        if (count == 0) {
+            throw new IllegalStateException("No values have been added to calculate statistics.");
+        }
         int min = numbers[0];
         for (int i = 1; i < count; i++) {
             if (numbers[i] < min) {
@@ -46,7 +78,11 @@ public class Stats {
         return min;
     }
 
-    // TODO [Step 3.7]: Add Javadoc with @return
+    /**
+     * Sums all the values that have been added.
+     *
+     * @return the total of all added values, or 0 if none have been added
+     */
     public int getTotal() {
         int total = 0;
         for (int i = 0; i < count; i++) {
@@ -55,8 +91,16 @@ public class Stats {
         return total;
     }
 
-    // TODO [Step 3.8]: Throw IllegalStateException if count == 0 ("No values have been added")
+    /**
+     * Calculates the average of the values that have been added.
+     *
+     * @return the average as a double
+     * @throws IllegalStateException if no values have been added
+     */
     public double getAverage() {
+        if (count == 0) {
+            throw new IllegalStateException("No values have been added to calculate statistics.");
+        }
         return getTotal() / (double) count;
     }
 
