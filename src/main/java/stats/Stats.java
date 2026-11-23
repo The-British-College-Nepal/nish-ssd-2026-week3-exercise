@@ -24,28 +24,40 @@ public class Stats {
         return this.count;
     }
 
-    // TODO [Step 2.1]: Loop up to count (NOT numbers.length) to find highest value
-    // TODO [Step 3.5]: Throw IllegalStateException if count == 0
+    // TODO [Step 3.5]: Throw IllegalStateException if count == 0 ("No values have been added")
     public int getMax() {
-        return 0;
+        int max = numbers[0];
+        for (int i = 1; i < count; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        return max;
     }
 
-    // TODO [Step 2.2]: Loop up to count (NOT numbers.length) to find lowest value
-    // TODO [Step 3.6]: Throw IllegalStateException if count == 0
+    // TODO [Step 3.6]: Throw IllegalStateException if count == 0 ("No values have been added")
     public int getMin() {
-        return 0;
+        int min = numbers[0];
+        for (int i = 1; i < count; i++) {
+            if (numbers[i] < min) {
+                min = numbers[i];
+            }
+        }
+        return min;
     }
 
-    // TODO [Step 2.3]: Sum all added values (loop up to count)
     // TODO [Step 3.7]: Add Javadoc with @return
     public int getTotal() {
-        return 0;
+        int total = 0;
+        for (int i = 0; i < count; i++) {
+            total += numbers[i];
+        }
+        return total;
     }
 
-    // TODO [Step 2.4]: Divide total by count as a double
-    // TODO [Step 3.8]: Throw IllegalStateException if count == 0
+    // TODO [Step 3.8]: Throw IllegalStateException if count == 0 ("No values have been added")
     public double getAverage() {
-        return 0.0;
+        return getTotal() / (double) count;
     }
 
     @Override
